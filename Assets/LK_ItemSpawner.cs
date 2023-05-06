@@ -17,7 +17,8 @@ public class LK_ItemSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.P))
+            SpawnItems();
     }
 
     private void OnDrawGizmos()
@@ -31,6 +32,13 @@ public class LK_ItemSpawner : MonoBehaviour
 
     public void SpawnItems()
     {
-
+        Debug.Log("Spawning Items");
+        for (int i = 0; i < ItemCount; i++) 
+        {
+            Vector3 pos = transform.position + Vector3.right * ItemSpacing * i;
+            pos.z = -0.1f;
+            GameObject spawned = Instantiate(Items[Random.Range(0, Items.Length)].SpawnableObject);
+            spawned.transform.position = pos;
+        }
     }
 }
