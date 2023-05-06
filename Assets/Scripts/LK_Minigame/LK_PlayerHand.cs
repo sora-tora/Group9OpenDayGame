@@ -38,5 +38,10 @@ namespace Minigames.Logan.Minigame1
 
             return;
         }
+
+        public bool IsHoldingItem()
+        {
+            return (_currentItem != null );
+        }
     }
 }

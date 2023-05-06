@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickupButton: 101
+  DropButton: 113
   PickupActiveTime: 0.2
   PickupTrigger: {fileID: 676583458}
   Hand: {fileID: 1180019619}
@@ -202,6 +203,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 326679696}
+  - component: {fileID: 326679697}
+  - component: {fileID: 326679698}
   m_Layer: 0
   m_Name: Upload
   m_TagString: Untagged
@@ -225,6 +228,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &326679697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326679695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448cfa9c17b805040a7a888e58002cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Satisfied: 0
+  QualifiedItemNames: []
+  PreferredItemName: 
+--- !u!58 &326679698
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326679695}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &676583455
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +704,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180019617}
   m_LocalRotation: {x: 0, y: 0, z: -0.14435618, w: 0.98952585}
-  m_LocalPosition: {x: 0.255, y: -0.246, z: 0}
+  m_LocalPosition: {x: 0.255, y: -0.246, z: -0.05}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -699,6 +733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1187823050}
   - component: {fileID: 1187823051}
+  - component: {fileID: 1187823052}
   m_Layer: 0
   m_Name: Bin
   m_TagString: Untagged
@@ -737,6 +772,22 @@ MonoBehaviour:
   Satisfied: 0
   QualifiedItemNames: []
   PreferredItemName: 
+--- !u!58 &1187823052
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187823049}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1205646905
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26ad6fa6f5ff3fe4cb734b01a84237ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Score: 0
   RemainingTime: 50
   GameObjectsInPlay: []
   Spawner: {fileID: 1567993688}
@@ -919,7 +969,8 @@ MonoBehaviour:
   Items:
   - Name: Assignment
     SpawnableObject: {fileID: 1803051662261407735, guid: 92981e1d9b455b147933e93a43acfd9d, type: 3}
-    QualifiedRecipients: []
+    QualifiedRecipients:
+    - {fileID: 326679697}
   - Name: Rubbish
     SpawnableObject: {fileID: 5846583225205874386, guid: 332087eb946bf50418985304332135cf, type: 3}
     QualifiedRecipients:

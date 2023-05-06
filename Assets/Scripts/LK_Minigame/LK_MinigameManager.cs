@@ -6,7 +6,17 @@ namespace Minigames.Logan.Minigame1
 {
     public class LK_MinigameManager : MonoBehaviour
     {
-        public int Score = 0;
+        private int _score = 0;
+        public int Score
+        {
+            get { return _score; }
+            set
+            {
+                int diff = value - _score;
+                _score = value;
+                Debug.Log($"Changing player score by {diff} to {_score}");
+            }
+        }
         public float RemainingTime = 50f;
         public List<GameObject> GameObjectsInPlay = new List<GameObject>();
         public LK_ItemSpawner Spawner;

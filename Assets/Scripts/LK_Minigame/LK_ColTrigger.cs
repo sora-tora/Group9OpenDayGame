@@ -24,9 +24,12 @@ namespace Minigames.Logan.Minigame1
             float closestDistance = 1000f;
             foreach (Collider2D col in Colliders)
             {
-                float dist = Vector3.Distance(transform.position, col.transform.position);
-                if (dist < closestDistance)
-                    closest = col.gameObject;
+                if (col.gameObject.GetComponent<LK_Item>() != null)
+                {
+                    float dist = Vector3.Distance(transform.position, col.transform.position);
+                    if (dist < closestDistance)
+                        closest = col.gameObject;
+                }
             }
             return closest;
         }
