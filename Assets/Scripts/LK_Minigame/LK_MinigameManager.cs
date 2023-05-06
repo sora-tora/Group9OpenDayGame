@@ -23,6 +23,16 @@ namespace Minigames.Logan.Minigame1
 
         public LK_ItemRecipient[] Recipients;
 
+        private void Awake()
+        {
+            Recipients = FindObjectsOfType<LK_ItemRecipient>();
+        }
+
+        public int GetScore()
+        {
+            return Score;
+        }
+
         // Start is called before the first frame update
         void Start()
         {
