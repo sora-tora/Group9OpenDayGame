@@ -9,5 +9,6 @@ namespace Minigames.Logan.Minigame1
     {
         public string Name;
         public GameObject SpawnableObject;
+        public LK_ItemRecipient[] QualifiedRecipients;
     }
 }

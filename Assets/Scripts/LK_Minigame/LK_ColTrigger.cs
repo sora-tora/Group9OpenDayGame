@@ -18,11 +18,6 @@ namespace Minigames.Logan.Minigame1
             Colliders.Remove(collision);
         }
 
-        private void OnDisable()
-        {
-            //Colliders.Clear();
-        }
-
         public GameObject GetClosest()
         {
             GameObject closest = null;

@@ -10,17 +10,10 @@ namespace Minigames.Logan.Minigame1
         public int ItemCount = 4;
         public float ItemSpacing = 1f;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.P))
-                SpawnItems();
+
         }
 
         private void OnDrawGizmos()
@@ -32,16 +25,21 @@ namespace Minigames.Logan.Minigame1
             }
         }
 
-        public void SpawnItems()
+        public GameObject[] SpawnItems()
         {
             Debug.Log("Spawning Items");
+            GameObject[] spawnedObjs = new GameObject[ItemCount];
             for (int i = 0; i < ItemCount; i++)
             {
                 Vector3 pos = transform.position + Vector3.right * ItemSpacing * i;
                 pos.z = -0.1f;
-                GameObject spawned = Instantiate(Items[Random.Range(0, Items.Length)].SpawnableObject);
+                int itemIndex = Random.Range(0, Items.Length);
+                GameObject spawned = Instantiate(Items[itemIndex].SpawnableObject);
+                spawnedObjs[i] = spawned;
+                spawned.AddComponent<LK_Item>().item = Items[itemIndex];
                 spawned.transform.position = pos;
             }
+            return spawnedObjs;
         }
     }
 }
