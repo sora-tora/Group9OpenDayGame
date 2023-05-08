@@ -5,7 +5,6 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5f;
     [SerializeField]
     private TMP_Text pressToAttack;
     public Transform wallTransform;
@@ -14,25 +13,17 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Panel;
 
     private Rigidbody rb;
+    private Animator animator;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         pressToAttack.gameObject.SetActive(false);
 
     }
 
-    private void FixedUpdate()
-    {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
-
-        rb.velocity = movement * speed;
-
-     
-    }
+  
     private void Update(){
 
         if (wallTransform != null)
@@ -41,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
             if (distanceToWall <= 7){
    if (Input.GetKeyUp(KeyCode.F))
                 {
+
                     Debug.Log("pressed F");
                     OpenPanel();
                 }
@@ -48,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
              
             }
             else{
+
                 pressToAttack.gameObject.SetActive(false);
                 Panel.SetActive(false);
             }
