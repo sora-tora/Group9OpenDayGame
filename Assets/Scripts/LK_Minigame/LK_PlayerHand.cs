@@ -5,6 +5,11 @@ namespace Minigames.Logan.Minigame1
     public class LK_PlayerHand : MonoBehaviour
     {
         private GameObject _currentItem;
+        public GameObject CurrentItem
+        {
+            get { return _currentItem; }
+            private set { _currentItem = value; }
+        }
 
         public GameObject TakeItem()
         {

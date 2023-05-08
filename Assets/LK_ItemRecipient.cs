@@ -59,5 +59,33 @@ namespace Minigames.Logan.Minigame1
 
             return score;
         }
+
+        public int PretendGiveItem(GameObject item)
+        {
+            int score = 0;
+
+            Debug.Log($"{gameObject.name} is recieving {item.name}");
+            LK_Item itemInfo = item.GetComponent<LK_Item>();
+
+            string itemName = itemInfo.item.Name;
+
+            if (itemName == PreferredItemName)
+            {
+                // award extra points
+                score += 5;
+            }
+            else if (QualifiedItemNames.Contains(itemName))
+            {
+                // award normal points
+                score += 2;
+            }
+            else
+            {
+                // this doesn't want this item, take away points from player
+                score -= 2;
+            }
+
+            return score;
+        }
     }
 }
