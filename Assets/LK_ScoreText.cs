@@ -17,7 +17,7 @@ namespace Minigames.Logan.Minigame1
         // Update is called once per frame
         void Update()
         {
-            _textMeshProUGUI.text = $"SCORE {_minigameManager.Score}";
+            _textMeshProUGUI.text = $"SCORE {_minigameManager.Score}\nREMAINING TIME: {_minigameManager.RemainingTime.ToString("0.0")} s";
         }
     }
 }

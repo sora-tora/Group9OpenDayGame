@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Minigames.Logan.Minigame1
 {
@@ -23,15 +24,30 @@ namespace Minigames.Logan.Minigame1
 
         public LK_ItemRecipient[] Recipients;
 
+        private bool _isGameRunning = false;
+        public bool IsGameRunning
+        {
+            get { return _isGameRunning; }
+            set
+            {
+                _isGameRunning = value;
+                IsGameRunning_ChangedEvent.Invoke();
+            }
+        }
+        public UnityEvent IsGameRunning_ChangedEvent;
+
         private void Awake()
         {
             Recipients = FindObjectsOfType<LK_ItemRecipient>();
+            IsGameRunning_ChangedEvent.AddListener(On_IsGameRunning_Changed);
         }
 
         public int GetScore()
         {
             return Score;
         }
+
+        private float _tsecond = 0f;
 
         // Start is called before the first frame update
         void Start()
@@ -44,14 +60,28 @@ namespace Minigames.Logan.Minigame1
                     recipient.QualifiedItemNames.Add(item.Name);
                 }
             }
+
+            IsGameRunning = true;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.P))
+            if (IsGameRunning)
             {
-                SpawnObjects();
+                // may as well try respawn the objects:
+                _tsecond += Time.deltaTime;
+                if (_tsecond > 1f)
+                {
+                    _tsecond = 0f;
+                    SpawnObjects();
+                }
+                RemainingTime -= Time.deltaTime;
+                if (RemainingTime <= 0f)
+                {
+                    IsGameRunning = false;
+                    Debug.Log("Finish game :)");
+                }
             }
         }
 
@@ -59,7 +89,7 @@ namespace Minigames.Logan.Minigame1
         {
             if (GameObjectsInPlay.Count > 0)
             {
-                Debug.LogWarning("There are still gameobjects in play, not spawning any more");
+                //Debug.LogWarning("There are still gameobjects in play, not spawning any more");
             }
             else
             {
@@ -76,6 +106,18 @@ namespace Minigames.Logan.Minigame1
             foreach(LK_ItemRecipient recipient in  Recipients)
             {
                 recipient.PreferredItemName = recipient.QualifiedItemNames[Random.Range(0, recipient.QualifiedItemNames.Count)];
+            }
+        }
+
+        private void On_IsGameRunning_Changed()
+        {
+            if (IsGameRunning)
+            {
+                // Game has just started
+            }
+            else
+            {
+                // Game has just finished
             }
         }
     }
