@@ -1,6 +1,7 @@
 using Minigames.Logan.Minigame1;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Overworld
@@ -30,6 +31,7 @@ namespace Game.Overworld
                     playerController.MoveRightKey = (i == 0? PlayerTracker.P1_RIGHT : PlayerTracker.P2_RIGHT);
                     playerController.MoveLeftKey = (i == 0 ? PlayerTracker.P1_LEFT : PlayerTracker.P2_LEFT);
                 }
+                playerController.AddComponent<PlayerLimits>();
             }
         }
     }
