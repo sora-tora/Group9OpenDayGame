@@ -1,7 +1,9 @@
+using Game;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Minigames.Logan.Minigame1
 {
@@ -18,7 +20,7 @@ namespace Minigames.Logan.Minigame1
                 Debug.Log($"Changing player score by {diff} to {_score}");
             }
         }
-        public float RemainingTime = 50f;
+        public float RemainingTime = 20f;
         public List<GameObject> GameObjectsInPlay = new List<GameObject>();
         public LK_ItemSpawner Spawner;
 
@@ -118,6 +120,8 @@ namespace Minigames.Logan.Minigame1
             else
             {
                 // Game has just finished
+                PlayerTracker.BossCurrentHealth -= 1.5f * Score;
+                SceneManager.LoadScene(1);
             }
         }
     }
