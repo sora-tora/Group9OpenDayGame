@@ -8,7 +8,9 @@ namespace Game.MainMenu
         public void ButtonPush(int pCount)
         {
             PlayerTracker.PlayerCount = pCount;
+            PlayerTracker.BossCurrentHealth = PlayerTracker.BOSSMAXHEALTH;
             SceneManager.LoadScene(1);
+
         }
     }
 }
