@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main/LK_Minigame.unity
     guid: cb0071df4785f5242b8fdea90b35b5f1
   - enabled: 1
+    path: Assets/Scenes/Main/EndGameScene.unity
+    guid: 61f40309cf585ed40b9353bf03910314
+  - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: b356b438901f4444dbec0376eaff4d2f
   - enabled: 1
