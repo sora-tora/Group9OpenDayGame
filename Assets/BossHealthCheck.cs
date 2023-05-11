@@ -17,7 +17,7 @@ public class BossHealthCheck : MonoBehaviour
     {
         if (PlayerTracker.BossCurrentHealth < 0)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(4);
         }
     }
 }
