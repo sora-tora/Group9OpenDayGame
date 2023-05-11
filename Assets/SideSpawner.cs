@@ -24,6 +24,7 @@ namespace MiniGames.Logan.MinigameRun
             {
                 GameObject newPlayer = Instantiate(PlayerPrefab);
                 newPlayer.transform.position = spawns[i].transform.position;
+                newPlayer.GetComponent<LK_JumpController>().JumpCode = (i == 0 ? PlayerTracker.P1_UP : PlayerTracker.P2_UP);
             }
         }
     }
