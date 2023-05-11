@@ -24,7 +24,7 @@ namespace Game.Overworld
                     if (colin.gameObject.GetComponent<LK_TopDownPlayerController>() != null)
                     {
                         // load scene additively
-                        SceneManager.LoadScene(2);
+                        SceneManager.LoadScene(Random.Range(2, 4));
                         // disable movement
                         foreach (LK_TopDownPlayerController player in FindObjectsOfType<LK_TopDownPlayerController>())
                         {

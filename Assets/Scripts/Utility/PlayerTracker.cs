@@ -18,6 +18,6 @@ namespace Game
         public const KeyCode P2_DOWN = KeyCode.DownArrow;
         public const KeyCode P2_RIGHT = KeyCode.RightArrow;
         public const KeyCode P2_LEFT = KeyCode.LeftArrow;
-        public static float BossCurrentHealth;
+        public static float BossCurrentHealth = BOSSMAXHEALTH;
     }
 }
